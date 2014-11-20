@@ -9,7 +9,9 @@ CONFIG += staticlib
 SOURCES += vectCalc.cpp
 
 #HEADERS += *.h *.hpp
-HEADERS += vecttempl.h vectCalc.h
+HEADERS += vecttempl.h vectCalc.h \
+    array.hpp \
+    array.h
 
 DESTDIR = ../lib
 
