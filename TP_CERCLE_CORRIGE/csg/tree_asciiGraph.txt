@@ -1,0 +1,33 @@
+int CsgTree::vizuGraphRec(std::ostream& out, const CsgNode *node, int prof, bool right, const std::string& interligne) const
+{
+	if (node == NULL)
+	{
+		if (right)
+			out << interligne<< std::endl;
+		else
+			out << std::endl;
+		return 0;
+	}
+
+	if (right)
+		for (int i=0; i<prof;++i)
+                        out << "          ";
+
+	out << " --> " << node->label();
+
+        int lprof = vizuGraphRec(out, node->getLeftChild(), prof+1,false, interligne+"|         ");
+        int rprof = vizuGraphRec(out, node->getRightChild(), prof+1,true, interligne+"          ");
+
+	return std::max(lprof,rprof);
+}
+
+
+std::string CsgTree::asciiArtGraph()
+{
+	std::stringstream ss;
+	for (std::set<CsgNode *>::const_iterator it = roots.begin(); it !=roots.end(); ++it)
+	{
+		vizuGraphRec(ss,*it);
+	}
+	return ss.str();
+}
