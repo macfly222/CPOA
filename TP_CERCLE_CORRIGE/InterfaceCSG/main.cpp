@@ -59,15 +59,15 @@ int main(int argc, char *argv[])
         A += B;
         A += 1.0f;
 
-        A.print_array(); // on attend 5 et on obtient 5.
-        B.print_array(); // on attend 5 et on obtient 5.
+        A.print_array(); // As expected
+        B.print_array(); // as expected
         A -= B;
         A -= 2.0f;
-        A.print_array(); // on attend -2et on obtient -2.
+        A.print_array(); // as expected
 
+        B = B + A;
 
-
-
+        B.print_array();    // as expected. -2 + -2 = -4
     }
 
 }
