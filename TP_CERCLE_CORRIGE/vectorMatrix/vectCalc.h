@@ -16,7 +16,7 @@ public:
 	// epsilon en static public pour etre modifiable depuis l'exterieur
     static float s_epsilon;
 
-	VectCalc();
+    VectCalc();
 
     VectCalc(int sz);
 
@@ -33,18 +33,18 @@ public:
     bool operator==(const VectCalc& arr) const;
 
 
-	VectCalc& operator*=(float f);
+    VectCalc& operator*=(float f);
 
     // OPERATEUR * membre de la classe pour v*f
-	VectCalc operator*(float f) const;
+    VectCalc operator*(float f) const;
 
-	VectCalc& operator+=(const VectCalc& v);
+    VectCalc& operator+=(const VectCalc& v);
 
     // initialise le vecteur avec des zero
-	void zero();
+    void zero();
 
-	template <typename FUNC>
-	void apply(FUNC f);
+    template <typename FUNC>
+    void apply(FUNC f);
 
 };
 
@@ -54,8 +54,8 @@ VectCalc operator*(float f, const VectCalc& v);
 template <typename FUNC>
 void VectCalc::apply(FUNC f)
 {
-	for (int i=0; i< m_size; ++i)
-		 m_data[i] = f(m_data[i]);
+    for (int i=0; i< m_size; ++i)
+         m_data[i] = f(m_data[i]);
 }
 
 

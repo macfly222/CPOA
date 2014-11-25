@@ -17,13 +17,12 @@ Array<T,N>::Array(const Array<T,N> & arr):
 m_data(NULL),
 m_size(0)
 {
-    assert(arr.m_size != 0);			// interdit la copie de Vecteur vide !
-
-    m_size = arr.m_size;				// copie la nouvelle taille
-    m_data = new T[arr.m_size];         // et on alloue a la bonne taille
+    assert(arr.m_size != 0);
+    m_size = arr.m_size;
+    m_data = new T[arr.m_size];
 
     for (int i=0; i< m_size;++i)
-        m_data[i] = arr.m_data[i];		// copie les données
+        m_data[i] = arr.m_data[i];
 
     s_nb++;
 }
@@ -37,6 +36,15 @@ Array<T,N>::~Array()
 }
 
 template<typename T, int N>
+void Array<T, N>::fill(const T& t)
+{
+    for (int i = 0; i < N; i++)
+    {
+        m_data[i] = t;
+    }
+}
+
+template<typename T, int N>
 T& Array<T,N>::operator[](int i)
 {
     assert((i>=0)&&(i<m_size));
@@ -44,7 +52,7 @@ T& Array<T,N>::operator[](int i)
 }
 
 template<typename T ,int N>
-const T& Array<T,N>::operator[](int i) const
+T& Array<T,N>::operator[](int i) const
 {
     assert((i>=0)&&(i<m_size));
     return m_data[i];
@@ -53,7 +61,7 @@ const T& Array<T,N>::operator[](int i) const
 template<typename T,int N>
 void Array<T,N>::print_array()
 {
-    assert(m_size != 0);
+    assert(N !=0);
     for(int i=0;i<N;++i)
         std::cout << "[" << m_data[i] << "]" << std::endl;
 }
@@ -61,18 +69,25 @@ void Array<T,N>::print_array()
 template<typename T,int N>
 Array <T,N>& Array<T,N>::operator=(const Array<T,N>& arr)
 {
-    assert(size() == arr.m_size);
     for(int i=0;i<N;++i)
         m_data[i] = arr[i];
     return *this;
 }
 
+template <typename T, int N>
+Array<T,N>& Array<T,N>::operator=(const T& t)
+{
+    for (int i = 0; i < N; i++)
+        m_data[i] = t;
+    return *this;
+}
+
+
 template<typename T, int N>
 bool Array<T,N>::operator==(const Array<T,N>& arr) const
 {
-    assert(size() == arr.size());
-
-    for(int i=0;i<arr.size(); ++i)
+    //assert inutile ici a cause du prototype
+    for(int i=0;i<arr.get_size(); ++i)
         if (m_data[i] != arr[i])
             return false;
 
@@ -80,60 +95,29 @@ bool Array<T,N>::operator==(const Array<T,N>& arr) const
 }
 
 template<typename T, int N>
-const int Array<T,N>::size() const
+void Array<T,N>::set_size(int i)
+{
+    m_size = i;
+}
+
+template<typename T, int N>
+int Array<T,N>::get_size() const
 {
     return m_size;
 }
 
-//template<typename T, int N>
-//int Array<T,N>::size()
+//template<typename T, unsigned int N>
+//std::ostream & operator<<(std::ostream & stream, const Array<T,N> & arr)
 //{
-//    return m_size;
-//}
-
-//template<typename T>
-//void VectTempl<T>::resize(int sz)
-//{
-//    assert(sz != 0);
-
-//    float* data = new T[sz];		// tableau temporaire
-
-//    if (m_data != NULL)					// vec non vide ?
+//    for (int i = 0; i < N; i++)
 //    {
-//        int s = std::min(m_size,sz);
-//        for (int i=0; i<s; ++i)			// copie les donnees dispo
-//            data[i] = m_data[i];
-//        delete[] m_data;				// desalloue les donnees
+//        if (i) stream << " ";
+//        stream << arr[i];
 //    }
-//    m_data = data;						// remplace les donnees par le tableau tempo
-//    m_size = sz;						// avec la taille
+
+//    return stream;
 //}
 
-
-
-
-
-//template<typename T>
-//std::ostream& operator << (std::ostream& os, const VectTempl<T>& arr)
-//{
-//    assert(arr.size() != 0);
-//    os << arr[0];
-//    for(int i=1; i<arr.size();++i)
-//        os << " " << arr[i];
-//    return os;
-//}
-
-//template<typename T>
-//std::istream& operator >> (std::istream& is, VectTempl<T>& arr)
-//{
-//    for(int i=0; i< arr.size(); ++i)
-//        is >> arr[i];
-//    return is;
-//}
-
-
-//template<typename T>
-//int VectTempl<T>::s_nb = 0;
 
 #endif  //ARRAY_HPP
 

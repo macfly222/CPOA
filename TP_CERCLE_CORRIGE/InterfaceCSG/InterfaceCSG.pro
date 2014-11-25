@@ -20,7 +20,7 @@ LIBS +=  -L ../lib \
 #	-limage \
         -lvectorMatrix \
 #   -lparticle \
-	-lboost_thread
+        -Iboost_thread
 
 PRE_TARGETDEPS += ../lib/*.a
 

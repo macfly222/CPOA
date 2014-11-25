@@ -1,6 +1,10 @@
 #ifndef ARRAY_H
 #define ARRAY_H
 
+#include <ostream>
+#include <algorithm>        // pour rajouter la fonction swap...
+
+
 template <typename T, int N>
 class Array
 {
@@ -14,36 +18,32 @@ class Array
         static int s_nb;
 
         Array();
+        Array(const Array& arr);
 
         ~Array();
 
-        Array(const Array& arr);
+        void fill(const T& t);  // pour tester uniquement, peu d'interet reel ici
 
         T& operator[](int i);
-
-        const T& operator[](int i) const;
+        T& operator[](int i) const;
 
         Array <T,N>& operator=(const Array <T,N> & arr);
+        Array<T,N>& operator=(const T& t);
+        // en fait cela s'averait necessaire de redefinir pour les types REFERENCé
+        // mais pas pour les types de bases.
 
-        bool operator==(const Array& ) const;
+        bool operator==( const Array& ) const;
 
-        const int size() const;
+        void set_size(int i);
+        int get_size() const;
 
-        //int size();
-
-        void print_array(); // sert principalement pour des tests.
-
-
-//        void resize(int sz);
-
+        void print_array(); // sert pour des tests.
 
 
 
-//        static int nbObjects() { return s_nb; }
-
-//        T* data() { return m_data; }
 };
-
+//template<typename T, int N>
+//std::ostream & operator<<(std::ostream & stream, const Array<T,N> & arr);
 
 #include "array.hpp"
 
