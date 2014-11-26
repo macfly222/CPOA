@@ -21,6 +21,6 @@ v3f operator^(const v3f& v1,const v3f& v2);  // cross product
 
 
 
-#include "v3f.hpp"
+
 
 #endif // V3F_H

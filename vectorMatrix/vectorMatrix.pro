@@ -7,7 +7,9 @@ CONFIG += staticlib
 
 #SOURCES += *.cpp
 SOURCES += vectCalc.cpp \
-    matrix33f.cpp
+    matrix33f.cpp \
+    v3f.cpp \
+    v2f.cpp
 
 #HEADERS += *.h *.hpp
 HEADERS += vecttempl.h \
@@ -17,9 +19,7 @@ HEADERS += vecttempl.h \
     vector.h \
     vectCalc.h \
     v2f.h \
-    v2f.hpp \
     v3f.h \
-    v3f.hpp \
     matrix33f.h
 
 DESTDIR = ../lib

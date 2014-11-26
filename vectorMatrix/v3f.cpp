@@ -1,8 +1,8 @@
 #include "v3f.h"
 
-//v3f::v3f()
-//{
-//}
+v3f::v3f()
+{
+}
 
 v3f::v3f(const float a,const float b,const float c)              // constructeur facile a utiliser
 {

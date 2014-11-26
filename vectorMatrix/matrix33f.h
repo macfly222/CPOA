@@ -47,8 +47,8 @@ class matrix33f
         void set_scale(v2f& v);
         void apply_scale(v2f& v);
 
-        void set_rotate(const float theta);
-        void apply_rotate(const float theta);
+        void set_rotate(float angle);
+        void apply_rotate(float angle);
 
         // members
         column m_column[3];

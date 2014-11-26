@@ -1,8 +1,7 @@
 #include "v2f.h"
 
-
-//v2f::v2f()
-//{}
+v2f::v2f()
+{}
 
 v2f::v2f(const float a,const float b)               // constructeur facile a utiliser
 {

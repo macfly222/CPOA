@@ -4,7 +4,8 @@
 #include "vector.h"
 #include "v2f.h"
 #include "v3f.h"
-//#include "matrix33f.h"
+#include "matrix33f.h"
+
 #define DEBUG 4
 
 int main(int argc, char *argv[])
@@ -96,7 +97,7 @@ int main(int argc, char *argv[])
     }
     if(DEBUG == 4)
     {
-       //matrix33f m;
+        matrix33f m;
 
 
     }

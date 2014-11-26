@@ -18,8 +18,4 @@ class v2f: public V2F
 float operator*(const v2f& v1,const v2f& v2);  // dot product  mis en dehors pour faires des proto non membres, plus facile a ecrire/lire le code dans hpp
 //v2f operator^(const V2F& v1,const V2F& v2);  // cross product
 
-
-
-#include "v2f.hpp"
-
-#endif // V2F_H
+#endif
