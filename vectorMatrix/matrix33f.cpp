@@ -13,6 +13,15 @@ matrix33f::matrix33f(const float value)  // permet d'autre test, plus facilement
     m_column[0][0] = value;
     m_column[1][1] = value;
     m_column[2][2] = value;
+
+    m_column[0][1] = 0;
+    m_column[0][2] = 0;
+    m_column[1][0] = 0;
+
+    m_column[1][2] = 0;
+    m_column[2][0] = 0;
+    m_column[2][1] = 0;
+
 }
 
 matrix33f::matrix33f(   const float m11, const float m21, const float m31,
@@ -73,7 +82,7 @@ float matrix33f::det()
     return det =
     m_column[0][0] * (m_column[1][1] * m_column[2][2] - m_column[2][1] * m_column[1][2])
     -m_column[1][0] * (m_column[0][1] * m_column[2][2] - m_column[2][1] * m_column[0][2])
-    +m_column[2][0] * (m_column[0][1] * m_column[1][3] - m_column[1][1] * m_column[0][2]);
+    +m_column[2][0] * (m_column[0][1] * m_column[1][2] - m_column[1][1] * m_column[0][2]);
 }
 
 
@@ -166,6 +175,7 @@ void matrix33f::apply_scale(v2f& v)
 
 void matrix33f::set_rotate(float angle)
 {
+    float theta = angle * float(0.0174532925);
     m_column[0] = v3f(cos(theta),  sin(theta), 0);
     m_column[1] = v3f(-sin(theta), cos(theta), 0);
     m_column[2] = v3f(0,0,1);
@@ -173,15 +183,15 @@ void matrix33f::set_rotate(float angle)
 
 void matrix33f::apply_rotate(float angle)
 {
-    float a = angle * float(0.0174532925);
-    column c1 = cos(theta) * m_column[0] - (sin(theta) * m_column[1]);
-    //float m21 = (cos(theta) * m_column[0][1]) - (sin(theta) * m_column[1][1]);
-    //float m31 = (cos(theta) * m_column[0][2]) - (sin(theta) * m_column[1][2]);
-    column c2 = sin(theta) * m_column[0] + cos(theta) * m_column[1];
-    //float m22 = (sin(theta) * m_column[0][1]) + (cos(theta) * m_column[1][1]);
-    //float m32 = (sin(theta) * m_column[0][2]) + (cos(theta) * m_column[1][2]);
-    m_column[0] = c1;
-    m_column[1] = c2;
+    float theta = angle * float(0.0174532925);
+    float m11 = (cos(theta) * m_column[0][0]) - (sin(theta) * m_column[1][0]);
+    float m21 = (cos(theta) * m_column[0][1]) - (sin(theta) * m_column[1][1]);
+    float m31 = (cos(theta) * m_column[0][2]) - (sin(theta) * m_column[1][2]);
+    float m12 = (sin(theta) * m_column[0][0]) + (cos(theta) * m_column[1][0]);
+    float m22 = (sin(theta) * m_column[0][1]) + (cos(theta) * m_column[1][1]);
+    float m32 = (sin(theta) * m_column[0][2]) + (cos(theta) * m_column[1][2]);
+    m_column[0] = v3f(m11,m21,m31);
+    m_column[1] = v3f(m12,m22,m12);
 }
 
 
@@ -190,7 +200,7 @@ void matrix33f::apply_rotate(float angle)
 //
 // NON MEMBER
 //
-matrix33f& operator*(const matrix33f& m1, const matrix33f& m2)
+matrix33f operator*(const matrix33f& m1, const matrix33f& m2)
 {
     matrix33f res;
 
@@ -207,7 +217,7 @@ matrix33f& operator*(const matrix33f& m1, const matrix33f& m2)
     return res;
 }
 
-column& operator*(const matrix33f& m, const column& c)
+column operator*(const matrix33f& m, const column& c)
 {
     column res;
 

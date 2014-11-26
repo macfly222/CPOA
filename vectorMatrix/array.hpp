@@ -25,11 +25,7 @@ m_size(0)
     s_nb++;
 }
 
-Array  a;
-Array & afils = a;
 
-a=2;
-afils? 2!
 
 template<typename T, int N>
 Array<T,N>::~Array()
@@ -51,7 +47,7 @@ void Array<T, N>::fill(const T& t)
 template<typename T, int N>
 T& Array<T,N>::operator[](int i)
 {
-    assert((i>=0)&&(i<m_size));
+    assert((i>=0)&&(i<N));
     return m_data[i];
 }
 

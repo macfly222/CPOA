@@ -20,7 +20,9 @@ HEADERS += vecttempl.h \
     vectCalc.h \
     v2f.h \
     v3f.h \
-    matrix33f.h
+    matrix33f.h \
+    image.h \
+    image.hpp
 
 DESTDIR = ../lib
 

@@ -54,7 +54,7 @@ class matrix33f
         column m_column[3];
 };
 
-matrix33f& operator*(const matrix33f& m1, const matrix33f& m2);
-column& operator*(const matrix33f& m, const column& c);
+matrix33f operator*(const matrix33f& m1, const matrix33f& m2);
+column operator*(const matrix33f& m, const column& c);
 
 #endif // MATRIX33F_H
