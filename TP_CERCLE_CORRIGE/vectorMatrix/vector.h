@@ -1,6 +1,7 @@
 #ifndef VECTOR_H
 #define VECTOR_H
 
+
 template <typename T, int N>
 class Vector : public Array<T,N>
 {
@@ -26,10 +27,10 @@ class Vector : public Array<T,N>
         Vector<T,N> operator-(const Vector<T,N>& v);
         Vector<T,N> operator-(const T & t);
 
-        Vector<T,N> operator*(const Vector<T,N>& v);
+        // je faisais ici, V1*V2, on les considérant comme deux scalaires. pas d'erreur, mais intuitivement faux. C'est un dot product qu'il faut faire.
+        // redéfinit dans V2F et V3F
         Vector<T,N> operator*(const T & t);
 
-        Vector<T,N> operator/(const Vector<T,N>& v);  // il faut EMPECHER la div par ZERO
         Vector<T,N> operator/(const T & t);
 };
 

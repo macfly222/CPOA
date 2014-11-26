@@ -17,9 +17,7 @@ Array<T,N>::Array(const Array<T,N> & arr):
 m_data(NULL),
 m_size(0)
 {
-    assert(arr.m_size != 0);
-    m_size = arr.m_size;
-    m_data = new T[arr.m_size];
+    m_data = new T[N];
 
     for (int i=0; i< m_size;++i)
         m_data[i] = arr.m_data[i];
@@ -54,7 +52,7 @@ T& Array<T,N>::operator[](int i)
 template<typename T ,int N>
 T& Array<T,N>::operator[](int i) const
 {
-    assert((i>=0)&&(i<m_size));
+    assert((i>=0)&&(i<N));
     return m_data[i];
 }
 
@@ -63,7 +61,8 @@ void Array<T,N>::print_array()
 {
     assert(N !=0);
     for(int i=0;i<N;++i)
-        std::cout << "[" << m_data[i] << "]" << std::endl;
+        std::cout << "[" << m_data[i] << "]";
+    std::cout << std::endl;
 }
 
 template<typename T,int N>

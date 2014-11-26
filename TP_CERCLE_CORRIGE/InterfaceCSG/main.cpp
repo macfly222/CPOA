@@ -2,7 +2,9 @@
 #include "mainwindow.h"
 #include "array.h"
 #include "vector.h"
-
+#include "v2f.h"
+#include "v3f.h"
+#define DEBUG 3
 
 int main(int argc, char *argv[])
 {
@@ -10,9 +12,8 @@ int main(int argc, char *argv[])
 //	MainWindow w;
 //	w.show();
 //	return a.exec();
- int debug = 2;
 
-    if(debug == 1)
+    if(DEBUG == 1)
     {
         Array <float,2> * A = new Array<float,2>();
         Array <float,3> B = Array<float,3>();
@@ -45,7 +46,7 @@ int main(int argc, char *argv[])
 
         return 1;
     }
-    if(debug == 2)
+    if(DEBUG == 2)
     {
         Vector<float,3> A = Vector<float,3>();
         Vector<float,3> &B = A;         //on utilise le constructeur par copie de ARRAY.
@@ -68,6 +69,29 @@ int main(int argc, char *argv[])
         B = B + A;
 
         B.print_array();    // as expected. -2 + -2 = -4
+    }
+    if(DEBUG == 3)
+    {
+        v2f v1 = v2f(1.0f,0.0f);
+        v2f v2 = v2f(1.0f,5.0f);
+
+
+        Vector<float,2> A = v2f();
+        V2F v4 = v2f(2.0f,1.0f);   // ICI, c'est un VECTOR avec 2,FLOAT. Cela permet lutilisation des fonctions arithmétique et l'utilisation du constructeur spécialisé.
+        v3f v12 = v3f(1.0f,0.0f,0.0f);
+        v3f v13 = v3f(0.0f,1.0f,0.0f);
+        v3f v14 = v3f();
+        v4 = v1 + 2.0f;
+//        v4.print_array();
+//        A = v1 + v2;
+//        A.print_array();
+        //float x = v1 * v2;
+        //std::cout << x << std::endl;
+        //v1 = v1 ^ v2;  // CROSS EN 2D, BRAVO. ><"
+        //v1.print_array();
+
+        v14 = v12 ^ v13;
+        v14.print_array();
     }
 
 }

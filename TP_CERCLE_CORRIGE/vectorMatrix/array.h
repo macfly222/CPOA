@@ -15,6 +15,7 @@ class Array
 
 
     public:
+
         static int s_nb;
 
         Array();

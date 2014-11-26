@@ -14,7 +14,11 @@ HEADERS += vecttempl.h \
     array.h \
     vector.hpp \
     vector.h \
-    vectCalc.h
+    vectCalc.h \
+    v2f.h \
+    v2f.hpp \
+    v3f.h \
+    v3f.hpp
 
 DESTDIR = ../lib
 

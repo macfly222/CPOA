@@ -2,13 +2,15 @@
 
 template <typename T, int N>
 Vector<T,N>::Vector() : Array<T,N>()
-{
-}
+{}
 
-//template <typename T, int N>    // apres test, non necessaire pour la construction par copie. Ce qui est plutot logique, on appel celui de array.
+// apres test, non necessaire pour la construction par copie. Ce qui est plutot logique, on appel celui de array.
+
+//template <typename T, int N>
 //Vector<T,N>::Vector(const Vector<T,N>& v) : Array<T,N>(v)
 //{
 //}
+
 
 template <typename T, int N>
 Vector<T,N> & Vector<T,N>::operator+=(const Vector<T,N>& v)
@@ -127,23 +129,12 @@ Vector<T,N> Vector<T,N>::operator-(const Vector<T,N>& v)
 }
 
 template <typename T, int N>
-Vector<T,N> Vector<T,N>::operator-(const & t)
+Vector<T,N> Vector<T,N>::operator-(const T& t)
 {
     Vector<T, N> v2;
     for (int i=0;i<N;i++)
     {
         v2[i] = (*this)[i] - t;
-    }
-    return v2;
-}
-
-template <typename T, int N>
-Vector<T,N> Vector<T,N>::operator*(const Vector<T,N> & v)
-{
-    Vector<T, N> v2;
-    for (int i=0;i<N;i++)
-    {
-        v2[i] = (*this)[i] * v[i];
     }
     return v2;
 }
@@ -155,18 +146,6 @@ Vector<T,N> Vector<T,N>::operator*(const T & t)
     for (int i=0;i<N;i++)
     {
         v2[i] = (*this)[i] * t;
-    }
-    return v2;
-}
-
-template <typename T, int N>
-Vector<T,N> Vector<T,N>::operator/(const Vector<T,N> & v)  // il faut EMPECHER la div pa ZERO
-{
-    Vector<T, N> v2;
-    for (int i=0;i<N;i++)
-    {
-        assert(v[i] != 0);
-        v2[i] = (*this)[i] / v[i];
     }
     return v2;
 }

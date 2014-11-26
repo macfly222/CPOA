@@ -416,7 +416,7 @@ qmake_all: FORCE
 
 dist: 
 	@test -d .tmp/vectorMatrix1.0.0 || mkdir -p .tmp/vectorMatrix1.0.0
-	$(COPY_FILE) --parents $(DIST) .tmp/vectorMatrix1.0.0/ && $(COPY_FILE) --parents ../../TP_CERCLE_CORRIGE/vectorMatrix/vecttempl.h ../../TP_CERCLE_CORRIGE/vectorMatrix/array.hpp ../../TP_CERCLE_CORRIGE/vectorMatrix/array.h ../../TP_CERCLE_CORRIGE/vectorMatrix/vector.hpp ../../TP_CERCLE_CORRIGE/vectorMatrix/vector.h ../../TP_CERCLE_CORRIGE/vectorMatrix/vectCalc.h .tmp/vectorMatrix1.0.0/ && $(COPY_FILE) --parents ../../TP_CERCLE_CORRIGE/vectorMatrix/vectCalc.cpp .tmp/vectorMatrix1.0.0/ && (cd `dirname .tmp/vectorMatrix1.0.0` && $(TAR) vectorMatrix1.0.0.tar vectorMatrix1.0.0 && $(COMPRESS) vectorMatrix1.0.0.tar) && $(MOVE) `dirname .tmp/vectorMatrix1.0.0`/vectorMatrix1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/vectorMatrix1.0.0
+	$(COPY_FILE) --parents $(DIST) .tmp/vectorMatrix1.0.0/ && $(COPY_FILE) --parents ../../TP_CERCLE_CORRIGE/vectorMatrix/vecttempl.h ../../TP_CERCLE_CORRIGE/vectorMatrix/array.hpp ../../TP_CERCLE_CORRIGE/vectorMatrix/array.h ../../TP_CERCLE_CORRIGE/vectorMatrix/vector.hpp ../../TP_CERCLE_CORRIGE/vectorMatrix/vector.h ../../TP_CERCLE_CORRIGE/vectorMatrix/vectCalc.h ../../TP_CERCLE_CORRIGE/vectorMatrix/v2f.h ../../TP_CERCLE_CORRIGE/vectorMatrix/v2f.hpp ../../TP_CERCLE_CORRIGE/vectorMatrix/v3f.h ../../TP_CERCLE_CORRIGE/vectorMatrix/v3f.hpp .tmp/vectorMatrix1.0.0/ && $(COPY_FILE) --parents ../../TP_CERCLE_CORRIGE/vectorMatrix/vectCalc.cpp .tmp/vectorMatrix1.0.0/ && (cd `dirname .tmp/vectorMatrix1.0.0` && $(TAR) vectorMatrix1.0.0.tar vectorMatrix1.0.0 && $(COMPRESS) vectorMatrix1.0.0.tar) && $(MOVE) `dirname .tmp/vectorMatrix1.0.0`/vectorMatrix1.0.0.tar.gz . && $(DEL_FILE) -r .tmp/vectorMatrix1.0.0
 
 
 clean:compiler_clean 
