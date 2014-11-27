@@ -9,7 +9,8 @@ CONFIG += staticlib
 SOURCES += vectCalc.cpp \
     matrix33f.cpp \
     v3f.cpp \
-    v2f.cpp
+    v2f.cpp \
+    image2grey.cpp
 
 #HEADERS += *.h *.hpp
 HEADERS += vecttempl.h \
@@ -22,7 +23,10 @@ HEADERS += vecttempl.h \
     v3f.h \
     matrix33f.h \
     image.h \
-    image.hpp
+    image.hpp \
+    image2d.h \
+    image2d.hpp \
+    image2grey.h
 
 DESTDIR = ../lib
 

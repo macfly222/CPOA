@@ -4,7 +4,7 @@
 #include <QGLWidget>
 
 //#include "image2grey.h"
-//#include "vec2f.h"
+//#include "v2f.h"
 //#include "particle.h"
 
 #include "vectCalc.h"

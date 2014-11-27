@@ -1,7 +1,7 @@
 #ifndef IMAGE_H
 #define IMAGE_H
 
-#include "Array.h"
+#include "array.h"
 
 
 template<typename T,int D>
@@ -35,5 +35,5 @@ class Image{
 };
 
 
-#include "Image.hpp"
+#include "image.hpp"
 #endif // IMAGE_H

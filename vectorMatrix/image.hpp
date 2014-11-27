@@ -12,12 +12,12 @@ template<typename T,int D>
 Image<T,D>::Image(const Array<int, D>& size):
 m_buff				(NULL)
 {
-	resize(sizes);
+	resize(size);
 	//m_precalcjump = 0;   // fait dans resize.
 }
 
 template<typename T,int D>
-Image<T,D>::Image(const Image& image):
+Image<T,D>::Image(const Image& image)
 //m_buff				(image.m_buff),  // besoin d'allouer l'espace. Pour ca, besoin de image.m_sizes.
 //m_sizes				(image.m_sizes), // on peut allouer ici, ou l'allouer dans "resize", qui etre appeler de toute facon.
 //m_precalcjump		(image.m_precalcjump)// idem.
@@ -27,13 +27,13 @@ Image<T,D>::Image(const Image& image):
 }
 
 template<typename T,int D>
-~Image()
+Image<T,D>::~Image()
 {
 	delete [] m_buff;
 }
 
 template<typename T,int D>
-Image<T,D>::resize(const Array<int, D>& sizes)
+void Image<T,D>::resize(const Array<int, D>& sizes)
 {
 	if(D)
 	{
@@ -47,7 +47,7 @@ Image<T,D>::resize(const Array<int, D>& sizes)
 
 	for(int i=0;i<D;i++)
 	{
-		m_size[i] = sizes[i];
+		m_sizes[i] = sizes[i];
 		m_pixelNumber *= sizes[i];
 		if(i)
 		{
@@ -76,7 +76,7 @@ Image<T,D>& Image<T,D>::operator=(const Image<T,D>& image)
 
 	// on détruit et on réalloue. sinon fuite mémoire.
 	delete [] m_buff;
-	m_buffer = new T[m_pixelNumber];
+	m_buff = new T[m_pixelNumber];
 
 	// on copie la mémoire.
 	memcpy(m_buff, image.m_buff, m_pixelNumber * sizeof(T));
