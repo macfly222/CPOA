@@ -6,7 +6,7 @@
 #include "v3f.h"
 #include "matrix33f.h"
 
-#define DEBUG 4
+#define DEBUG 5
 
 int main(int argc, char *argv[])
 {
@@ -97,23 +97,23 @@ int main(int argc, char *argv[])
     }
     if(DEBUG == 4)
     {
-        matrix33f m1(1);
-        matrix33f m2(1,3,3,1,4,3,1,3,4);
-        matrix33f m3;   // c'est comme ca que l'on appelle le constructeur par défaut !
-        matrix33f m4;
-        matrix33f m5(2);
+		matrix33f m1(1);
+		matrix33f m2(1,3,3,1,4,3,1,3,4);
+		matrix33f m3;   // c'est comme ca que l'on appelle le constructeur par défaut !
+		matrix33f m4;
+		matrix33f m5(2);
 
-        m2[0].print_array();
-        m2[1].print_array();
-        m2[2].print_array();
-        m3 = m2.inverse();
-        m4 = m2 * m3;
-        m3[0].print_array();
-        m3[1].print_array();   // OK
-        m3[2].print_array();
-        m4[0].print_array();
-        m4[1].print_array();
-        m4[2].print_array();
+		m2[0].print_array();
+		m2[1].print_array();
+		m2[2].print_array();
+		m3 = m2.inverse();
+		m4 = m2 * m3;
+		m3[0].print_array();
+		m3[1].print_array();   // OK
+		m3[2].print_array();
+		m4[0].print_array();
+		m4[1].print_array();
+		m4[2].print_array();
     }
 
 }
